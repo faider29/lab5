@@ -15,7 +15,9 @@ public class MainActivity extends AppCompatActivity {
 
     private DishAdapter mDishAdapter;
 
+
     private List<Dish> mDishList = new ArrayList<>();
+    private List<RecipeDataProvider>  mRecipeDataProviderList= new ArrayList<>();
 
 
     @Override
@@ -23,11 +25,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_main);
 
-        Dish dish = new Dish();
-        dish.setName("Coooooooook");
-        dish.setTime("55 min");
-        mDishList.add(dish);
-
+//        Dish dish = new Dish();
+//        dish.setName("Coooooooook");
+//        dish.setTime("55 min");
+//        mDishList.add(dish);
 
 
         mDishAdapter = new DishAdapter(getBaseContext(), mDishList);
