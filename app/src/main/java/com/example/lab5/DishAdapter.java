@@ -2,8 +2,10 @@ package com.example.lab5;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +25,13 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishHolder> {
     private List<Dish> mDishList;
     private Context mContext;
 
+    public static final String TAG = DishAdapter.class.getSimpleName();
+
     private String URL = "https://img09.rl0.ru/eda/c487x255i/s1.eda.ru/StaticContent/Photos/160915225201/160926183257/p_O.jpg";
 
     public DishAdapter(Context context, List<Dish> dishList) {
-        mDishList = dishList;
         mContext = context;
+        mDishList = dishList;
     }
 
     @NonNull
@@ -43,15 +47,17 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishHolder> {
         dishHolder.setTimeDish(mDishList.get(i).getTime());
 
         Picasso.get()
-                .load(URL + mDishList.get(i).getImg())
+//                .load(URL + mDishList.get(i).getImg())
+                .load(Uri.parse(URL))
                 .error(R.drawable.error)
                 .into(dishHolder.getDishImage());
+        Log.d(TAG, "Picasso: " + mDishList.size());
 
     }
 
     @Override
     public int getItemCount() {
-        return mDishList.size();
+        return mDishList == null ? 0:  mDishList.size();
     }
 
     public class DishHolder extends RecyclerView.ViewHolder {

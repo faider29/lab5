@@ -1,7 +1,7 @@
 package com.example.lab5;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
 
     private DishAdapter mDishAdapter;
+
     private List<Dish> mDishList = new ArrayList<>();
 
 
@@ -22,11 +23,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ac_main);
 
+        Dish dish = new Dish();
+        dish.setName("Coooooooook");
+        dish.setTime("55 min");
+        mDishList.add(dish);
 
 
-        mDishAdapter = new DishAdapter(getBaseContext(),mDishList);
+
+        mDishAdapter = new DishAdapter(getBaseContext(), mDishList);
         mRecyclerView = findViewById(R.id.rv_main);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getBaseContext()));
         mRecyclerView.setAdapter(mDishAdapter);
+        mDishAdapter.notifyDataSetChanged();
     }
 }
