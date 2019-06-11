@@ -1,4 +1,4 @@
-package com.example.lab5
+package com.example.lab5.entity
 
 import android.os.Parcel
 import android.os.Parcelable
@@ -56,7 +56,7 @@ interface DataProvider<Data>{
     fun provider(): Data
 }
 
-class RecipeDataProvider : DataProvider<List<Recipe>>{
+class RecipeDataProvider : DataProvider<List<Recipe>> {
 
     override fun provider()= listOf(
             Recipe(

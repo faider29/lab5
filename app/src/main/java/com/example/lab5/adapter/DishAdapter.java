@@ -1,8 +1,7 @@
-package com.example.lab5;
+package com.example.lab5.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -12,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lab5.R;
+import com.example.lab5.entity.Recipe;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
  */
 public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishHolder> {
 
-    private List<Dish> mDishList;
+//    private List<Dish> mDishList;
     private Context mContext;
     private List<Recipe> mRecipeDataProviderList;
 
@@ -32,7 +33,6 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishHolder> {
 
     public DishAdapter(Context context ,List<Recipe> recipeDataProviderList) {
         mContext = context;
-//        mDishList = dishList;
         mRecipeDataProviderList = recipeDataProviderList;
     }
 
