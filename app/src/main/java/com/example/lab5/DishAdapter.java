@@ -24,14 +24,16 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishHolder> {
 
     private List<Dish> mDishList;
     private Context mContext;
+    private List<Recipe> mRecipeDataProviderList;
 
     public static final String TAG = DishAdapter.class.getSimpleName();
 
     private String URL = "https://img09.rl0.ru/eda/c487x255i/s1.eda.ru/StaticContent/Photos/160915225201/160926183257/p_O.jpg";
 
-    public DishAdapter(Context context, List<Dish> dishList) {
+    public DishAdapter(Context context ,List<Recipe> recipeDataProviderList) {
         mContext = context;
-        mDishList = dishList;
+//        mDishList = dishList;
+        mRecipeDataProviderList = recipeDataProviderList;
     }
 
     @NonNull
@@ -43,21 +45,22 @@ public class DishAdapter extends RecyclerView.Adapter<DishAdapter.DishHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull DishHolder dishHolder, int i) {
-        dishHolder.setNameDish(mDishList.get(i).getName());
-        dishHolder.setTimeDish(mDishList.get(i).getTime());
+        dishHolder.setNameDish(mRecipeDataProviderList.get(i).getName());
+        dishHolder.setTimeDish(mRecipeDataProviderList.get(i).getTime());
 
         Picasso.get()
 //                .load(URL + mDishList.get(i).getImg())
-                .load(Uri.parse(URL))
+//                .load(mRecipeDataProviderList.get(i).getImages(1))
+                .load(mRecipeDataProviderList.get(i).getImages().get(1))
                 .error(R.drawable.error)
                 .into(dishHolder.getDishImage());
-        Log.d(TAG, "Picasso: " + mDishList.size());
+        Log.d(TAG, "Picasso: " + mRecipeDataProviderList.size());
 
     }
 
     @Override
     public int getItemCount() {
-        return mDishList == null ? 0:  mDishList.size();
+        return mRecipeDataProviderList == null ? 0:  mRecipeDataProviderList.size();
     }
 
     public class DishHolder extends RecyclerView.ViewHolder {
